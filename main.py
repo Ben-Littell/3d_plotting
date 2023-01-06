@@ -22,18 +22,24 @@ def plotscatter_3d(xd, yd, zd, plotcode='-rx'):
 
 
 def plot_surface_3d(xd, yd, zd):
-    fig = plt.figure(1)
+    fig = plt.figure(3)
     ax = fig.add_subplot(111, projection='3d')
     ax.plot_surface(xd, yd, zd, linewidth=0, antialiased=True, color='green')
     plt.show()
 
 
-# plotscatter_3d(x, y, z)
+def plot_wire_3d(xd, yd, zd):
+    fig = plt.figure(3)
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_wireframe(xd, yd, zd, rstride=10, cstride=10)
+    plt.show()
+
 
 y2 = np.arange(-5, 5, 0.1)
 x2 = np.arange(-5, 5, 0.1)
 X, Y = np.meshgrid(x2, y2)
 Z = np.exp(-(X**2 + Y**2)/2.0)
 
+plotscatter_3d(x, y, z)
 plot_surface_3d(X, Y, Z)
-
+plot_wire_3d(X, Y, Z)
